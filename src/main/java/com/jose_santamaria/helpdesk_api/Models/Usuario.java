@@ -1,4 +1,4 @@
-package com.jose_santamaria.helpdesk_api.Models;
+package com.jose_santamaria.helpdesk_api.models;
 
 public class Usuario {
     

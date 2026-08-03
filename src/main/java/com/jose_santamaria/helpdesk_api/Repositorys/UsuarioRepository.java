@@ -1,4 +1,4 @@
-package com.jose_santamaria.helpdesk_api.Repositorys;
+package com.jose_santamaria.helpdesk_api.repositorys;
 
 public class UsuarioRepository {
     
