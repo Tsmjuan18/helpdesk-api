@@ -1,12 +1,8 @@
-package com.jose_santamaria.helpdesk_api.enums;
+package com.jose_santamaria.helpdesk_api.Enum;
 
-/**
- * Estado
- */
 public enum Estado {
     ABIERTO,
     EN_PROCESO,
     RESUELTO;
-
     
 }
