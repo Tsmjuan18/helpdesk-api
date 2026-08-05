@@ -1,6 +1,6 @@
 package com.jose_santamaria.helpdesk_api.models;
 
-import com.jose_santamaria.helpdesk_api.enums.Rol;
+import com.jose_santamaria.helpdesk_api.Enum.Rol;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,11 +8,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+
+@Data
 @Entity
 public class Usuario {
     
