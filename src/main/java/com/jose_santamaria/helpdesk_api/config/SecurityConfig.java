@@ -9,14 +9,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 public class SecurityConfig {
 
     // TODO: reemplazar con reglas reales de JWT + RBAC (roles USUARIO/SOPORTE/ADMIN)
+    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll()
-            );
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+        .anyRequest().permitAll()
+    );
+    
+    return http.build();
+}
 
-        return http.build();
-    }
 }

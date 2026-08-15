@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.jose_santamaria.helpdesk_api.Enum.Estado;
 import com.jose_santamaria.helpdesk_api.dto.TicketRequestDto;
 import com.jose_santamaria.helpdesk_api.dto.TicketResponseDto;
+import com.jose_santamaria.helpdesk_api.exceptions.RecursoNoEncontradoException;
 import com.jose_santamaria.helpdesk_api.models.Ticket;
 import com.jose_santamaria.helpdesk_api.models.Usuario;
 import com.jose_santamaria.helpdesk_api.repositorys.TicketRepository;
@@ -28,7 +29,7 @@ public class TicketService {
     public TicketResponseDto crearTicket(TicketRequestDto dto){
 
         Usuario usuarioActual = usuarioRepository.findById(1L)
-        .orElseThrow(() -> new RuntimeException("El usuario no existe"));
+        .orElseThrow(() -> new RecursoNoEncontradoException("El usuario no existe"));
 
         Ticket ticket = new Ticket();
 
