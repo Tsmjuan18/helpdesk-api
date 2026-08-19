@@ -40,6 +40,14 @@ public class GlobalExceptionHandler {
 
     }
 
+    @ExceptionHandler(RecursoDuplicadoException.class)
+    public ResponseEntity<ErrorResponse> manejarDuplicados(RecursoDuplicadoException ex) {
+
+        ErrorResponse error = new ErrorResponse(409,ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+
+    }
+
 
 
     
