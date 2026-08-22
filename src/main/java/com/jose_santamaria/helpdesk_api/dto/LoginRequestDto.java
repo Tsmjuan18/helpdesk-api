@@ -1,30 +1,17 @@
 package com.jose_santamaria.helpdesk_api.dto;
 
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class UsuarioRequestDto {
+public class LoginRequestDto {
 
     @NotBlank
-    private String nombre;
-    
-    @NotBlank    
     @Email
     private String email;
 
     @NotBlank
-    @Size(min=6)
     private String password;
-    
-    public UsuarioRequestDto(){
-
-        
-    }
-
-
     
 }

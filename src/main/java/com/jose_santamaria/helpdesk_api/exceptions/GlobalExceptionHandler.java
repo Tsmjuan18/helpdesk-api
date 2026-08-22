@@ -6,11 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+// CLASE GLOBAL DONDE VAN TODAS LAS EXCEPCIONES
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RecursoNoEncontradoException.class)
-    
+    //EXCEPCION PARA 404 O RECURSO NO ENCONTRADO
+    @ExceptionHandler(RecursoNoEncontradoException.class)    
     public ResponseEntity<ErrorResponse>manejarRecursoNoEncontrado(RecursoNoEncontradoException ex){
 
         ErrorResponse error = new ErrorResponse(404, ex.getMessage());
@@ -18,7 +19,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
 
     }
-
+    //EXCEPCION DE VALIDACIONES
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> manejarExcepcionValidacion(MethodArgumentNotValidException ex) {
 
@@ -31,7 +32,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
         
     }
-
+    // EXCEPCION GENERAL 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> manejarExcepcionGenerica(Exception ex) {
 
@@ -39,7 +40,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 
     }
-
+    // EXCEPCION PARA DUPLICADOS
     @ExceptionHandler(RecursoDuplicadoException.class)
     public ResponseEntity<ErrorResponse> manejarDuplicados(RecursoDuplicadoException ex) {
 
@@ -47,6 +48,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
 
     }
+
+    //EXCEPCION PARA CREDENCIALES INVALIDAD
+    @ExceptionHandler(CredencialesInvalidasException.class)
+
+        public ResponseEntity<ErrorResponse> manejarCredencialesInvalidas(CredencialesInvalidasException ex){
+
+            ErrorResponse error = new ErrorResponse(401, ex.getMessage());
+
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+        }
+    
 
 
 

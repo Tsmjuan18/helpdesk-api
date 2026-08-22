@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import lombok.Data;
 
+// Clase para Describir excepciones
 @Data
 public class ErrorResponse {
-      private int status;
+      
+    private int status;
     private String message;
     private LocalDateTime timeStamp;
 
