@@ -58,6 +58,18 @@ public class GlobalExceptionHandler {
 
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
         }
+
+    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+public ResponseEntity<ErrorResponse> handleAccessDeniedException(
+        org.springframework.security.access.AccessDeniedException ex) {
+
+    ErrorResponse error = new ErrorResponse(
+        403,
+        "No tienes permisos para acceder a este recurso"
+    );
+
+    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
+}
     
 
 

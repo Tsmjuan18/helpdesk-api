@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jose_santamaria.helpdesk_api.dto.AuthResponseDto;
 import com.jose_santamaria.helpdesk_api.dto.LoginRequestDto;
+import com.jose_santamaria.helpdesk_api.dto.LogoutRequestDto;
+import com.jose_santamaria.helpdesk_api.dto.RefreshTokenRequestDto;
 import com.jose_santamaria.helpdesk_api.dto.UsuarioRequestDto;
 import com.jose_santamaria.helpdesk_api.dto.UsuarioResponseDto;
 import com.jose_santamaria.helpdesk_api.service.AuthService;
@@ -42,6 +44,23 @@ public class AuthController {
         AuthResponseDto res = authService.login(dto);
         return ResponseEntity.ok(res);
     }
+
+    //metodo para refrescar token
+    @PostMapping("/refresh")
+    public ResponseEntity<String> refrescar(@Valid @RequestBody RefreshTokenRequestDto dto){
+
+        String nuevoAccesoToken = authService.refrescarToken(dto);
+        return ResponseEntity.ok(nuevoAccesoToken);
+    }
+
+    //metodo para cerrar sesion
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@Valid @RequestBody LogoutRequestDto dto){
+
+        String response = authService.logout(dto);
+        return ResponseEntity.ok(response);
+    }
+
 
 
 
