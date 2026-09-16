@@ -1,0 +1,23 @@
+services: 
+  api:
+    image: juanjostm18/api-sla
+    ports:
+      - "3000:8080"
+    env_file:
+     - .env
+    mysql:
+      image: mysql:8
+      environnment:
+        -MYSQL_USER=test
+        -MYSQL_PASSWORD=test
+        -MYSQL_DATABASE=test
+      expose:
+        - 3306
+      volumes:
+        - mysql_test_data:/var/lib/mysql
+      
+volumes:
+  mysql_test_data:
+
+
+
